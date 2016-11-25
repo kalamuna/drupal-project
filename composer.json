@@ -1,0 +1,89 @@
+{
+    "name": "kalamuna/drupal-project",
+    "description": "Project template for Kalamuna projects with Drupal",
+    "type": "project",
+    "license": "GPL-2.0+",
+    "authors": [
+        {
+            "name": "",
+            "role": ""
+        }
+    ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/7"
+        }
+    ],
+    "require": {
+        "composer/installers": "^1.2",
+        "drupal-composer/drupal-scaffold": "^2.2",
+        "cweagans/composer-patches": "~1.0",
+        "drupal/drupal": "~7.0",
+        "drush/drush": "~8.0",
+        "drupal/admin_menu": "7.3.*",
+        "drupal/devel": "7.1.*"
+    },
+    "require-dev": {
+        "behat/mink": "~1.7",
+        "behat/mink-goutte-driver": "~1.2",
+        "jcalderonzumba/gastonjs": "~1.0.2",
+        "jcalderonzumba/mink-phantomjs-driver": "~0.3.1",
+        "mikey179/vfsStream": "~1.2",
+        "phpunit/phpunit": "~4.8",
+        "symfony/css-selector": "~2.8",
+        "drush-ops/behat-drush-endpoint": "*",
+        "drupal/drupal-extension": "dev-master",
+        "drupal/drupal-driver": "dev-master",
+        "pantheon-systems/ci-scripts": "*"
+    },
+    "config": {
+        "bin-dir": "bin/"
+    },
+    "conflict": {
+        "drupal/core": "8.*"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "classmap": [
+            "scripts/composer/ScriptHandler.php"
+        ]
+    },
+    "scripts": {
+        "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
+        "pre-install-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+        ],
+        "pre-update-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+        ],
+        "post-install-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+        ],
+        "post-update-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+        ]
+    },
+    "extra": {
+        "installer-paths": {
+            "web/": ["type:drupal-core"],
+            "web/sites/all/libraries/{$name}": ["type:drupal-library"],
+            "web/sites/all/modules/contrib/{$name}": ["type:drupal-module"],
+            "web/profiles/{$name}": ["type:drupal-profile"],
+            "web/sites/all/themes/contrib/{$name}": ["type:drupal-theme"],
+            "web/sites/all/drush/contrib/{$name}": ["type:drupal-drush"]
+        },
+        "preserve-paths": [
+          "web/sites/all/modules/contrib",
+          "web/sites/all/modules/custom",
+          "web/sites/all/modules/features",
+          "web/sites/all/themes/contrib",
+          "web/sites/all/themes/custom",
+          "web/sites/all/libraries",
+          "web/sites/all/drush",
+          "web/sites/default/settings.php",
+          "web/sites/default/files"
+        ]
+    }
+}
