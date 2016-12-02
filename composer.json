@@ -21,7 +21,8 @@
         "cweagans/composer-patches": "~1.0",
         "drupal/core": "~8.0",
         "drush/drush": "~8.0",
-        "drupal/console": "~1.0"
+        "drupal/console": "~1.0",
+        "pantheon-systems/ci-scripts": "^1.0"
     },
     "require-dev": {
         "behat/mink": "~1.7",
@@ -55,6 +56,9 @@
         ],
         "post-update-cmd": [
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+        ],
+        "deploy": [
+            "PSITE=d8demo PENV=dev push-to-pantheon"
         ]
     },
     "extra": {
