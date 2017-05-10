@@ -3,6 +3,9 @@
 /**
  * @file
  * Includes the settings files appropriate for production environments.
+ *
+ * @see default.settings.php
+ * @see https://api.drupal.org/api/drupal/sites!default!default.settings.php/8
  */
 
 // Always include the "common" settings first.
@@ -11,8 +14,7 @@ require $app_root . '/sites/settings.common.php';
 // Include environmental settings next.
 require "$app_root/sites/settings.production.php";
 
-// Load local environment override configuration, if available.
-// Keep this code block at the end of this file to take full effect.
+// Local settings. These come last so that they can override anything.
 if (file_exists("$app_root/$site_path/settings.local.php")) {
   include "$app_root/$site_path/settings.local.php";
 }
