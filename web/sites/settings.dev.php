@@ -3,6 +3,9 @@
 /**
  * @file
  * Local development override configuration feature.
+ *
+ * @see default.settings.php
+ * @see https://api.drupal.org/api/drupal/sites!default!default.settings.php/8
  */
 
 use \Drupal\Component\Assertion\Handle;
@@ -23,7 +26,7 @@ $config['system.performance']['js']['preprocess'] = FALSE;
 
 // Disable the render cache (this includes the page cache).
 // Do not use this setting until after the site is installed.
-// $settings['cache']['bins']['render'] = 'cache.backend.null';
+$settings['cache']['bins']['render'] = 'cache.backend.null';
 
 // Disable Dynamic Page Cache.
 $settings['cache']['bins']['dynamic_page_cache'] = 'cache.backend.null';
@@ -36,3 +39,6 @@ $settings['rebuild_access'] = TRUE;
 
 // Skip file system permissions hardening.
 $settings['skip_permissions_hardening'] = TRUE;
+
+// Set the Stage File Proxy origin URL for pulling images, files, etc.
+$config['stage_file_proxy.settings']['origin'] = 'http://FTUSA:redesign@prod.redesign.fairtradeusa.org.771elwb01.blackmesh.com';
