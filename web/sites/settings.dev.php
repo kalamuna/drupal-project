@@ -41,4 +41,4 @@ $settings['rebuild_access'] = TRUE;
 $settings['skip_permissions_hardening'] = TRUE;
 
 // Set the Stage File Proxy origin URL for pulling images, files, etc.
-$config['stage_file_proxy.settings']['origin'] = 'http://FTUSA:redesign@prod.redesign.fairtradeusa.org.771elwb01.blackmesh.com';
+$config['stage_file_proxy.settings']['origin'] = 'https://live-MYSITE.pantheonsite.io';

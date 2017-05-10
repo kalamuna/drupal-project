@@ -1,4 +1,4 @@
-# FTUSA Testing
+# Testing
 
 Tests make sure that the functionality we're writing is stable. This document will outline how to run the tests, as well as what's included in the tests themselves.
 
@@ -15,12 +15,17 @@ The tests include a few different components...
 
 ### PHPUnit
 
-[PHPUnit](https://phpunit.de/) runs a few functional and unit tests. See `web/modules/ftusa_util/tests/README.md` for more information on how the PHPUnit tests are set up.
+[PHPUnit](https://phpunit.de/) runs a few functional and unit tests. 
+
+-   BrowserTestExampleTest: Runs a headless web browser to test functionality on the site.
+-   KernelTestExampleTest: Has access to files and the database, but the environment is empty.
+-   UnitTestExampleTest: Unit tests that don't have access to the database.
+-   WebTestExampleTest: Test that uses the legacy SimpleTest system. It's recommended to use the BrowserTest instead.
 
 To run the PHPUnit unit tests, execute:
 
 ```
-vendor/bin/phpunit web/modules/ftusa_util/tests/src/UnitTestExampleTest.php
+vendor/bin/phpunit path/to/src/TestClass.php
 ```
 
 If phpunit is not available, you can run it through `vendor/bin/phpunit`.
@@ -33,7 +38,8 @@ To run the tests, execute:
 
 ```
 vendor/bin/phpcs --config-set installed_paths vendor/drupal/coder/coder_sniffer
-vendor/bin/phpcs --standard=Drupal web/modules/ftusa_util
+vendor/bin/phpcs --standard=Drupal web/modules/custom
+vendor/bin/phpcs --standard=Drupal web/themes
 ```
 
 If phpcs is not available, you can run it through `vendor/bin/phpcs`.

@@ -9,8 +9,9 @@
  */
 
 $settings['trusted_host_patterns'] = array(
-  '^master-7rqtwti-njk673pjbftas\.us\.platform\.sh$',
-  '^(www\.)?fairtradeusa\.org$',
+  '^live-MYSITE\.at\.kalamuna\.com$',
+  '^live-MYSITE\.pantheonsite\.io$',
+  '^(www\.)?MYSITE\.com$',
 );
 
 // Just in case the Stage File Proxy module gets enabled in production (which it
