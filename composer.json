@@ -102,10 +102,6 @@
             }
         },
         "preserve-paths": [
-            "web/sites/all/modules/contrib",
-            "web/sites/all/themes/contrib",
-            "web/sites/all/libraries",
-            "web/sites/all/drush",
             "web/sites/default/settings.php",
             "web/sites/default/files"
         ]
