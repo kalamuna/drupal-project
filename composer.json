@@ -44,7 +44,8 @@
         "drupal/devel": "^1.0",
         "drupal/stage_file_proxy": "^1.0-dev",
         "geerlingguy/drupal-vm": "^4.2",
-        "drupal/coder": "^8.2"
+        "drupal/coder": "^8.2",
+        "drupal-composer/preserve-paths": "^0.1.4"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -96,6 +97,10 @@
             "excludes": {
                 "sites/development.services.yml": "sites/development.services.yml"
             }
-        }
+        },
+        "preserve-paths": [
+            "web/sites/default/settings.php",
+            "web/sites/default/files"
+        ]
     }
 }
