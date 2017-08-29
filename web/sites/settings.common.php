@@ -41,6 +41,12 @@ if (file_exists("$app_root/sites/default/settings.pantheon.php")) {
   include "$app_root/sites/default/settings.pantheon.php";
 }
 
+// Set the maximum amount of kint levels to report.
+if (file_exists("$app_root/modules/contrib/devel/kint/kint/Kint.class.php")) {
+  require_once("$app_root/modules/contrib/devel/kint/kint/Kint.class.php");
+  Kint::$maxLevels = 4;
+}
+
 // Include settings specific to sites hosted on Acquia.
 elseif (isset($_SERVER['AH_SITE_ENVIRONMENT'])) {
   // When using Acquia, update "sitename" in the path below (two places).
