@@ -33,7 +33,7 @@ pluginOpts:
         sourceMap: true
         sourceComments: false
         includePaths:
-          - node_modules/bootstrap-sass/assets/stylesheets
+          - node_modules/bootstrap
           - node_modules/font-awesome/scss
           - web/themes/custom/kalastarter/kalastatic/src/styles
           - web/themes/custom/kalastarter/kalastatic/src/components
