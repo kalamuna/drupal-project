@@ -10,7 +10,7 @@
 
 // Isolate any subsequently-created variables from the global scope by
 // including settings files in a self-executing anonymous function.
-(function () use (&$app_root, &$site_path, &$class_loader, &$config_directories, &$config, &$settings, &$databases) {
+(function () use (&$app_root, &$site_path, &$class_loader, &$config_directories, &$config, &$settings, &$databases, &$env) {
 
   // Include settings common to all environments first.
   include "$app_root/sites/settings.common.php";
