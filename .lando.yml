@@ -1,0 +1,12 @@
+# Lando Configuration
+# https://docs.devwithlando.io/started.html
+
+#name: MYSITE
+#recipe: pantheon
+#config:
+#  framework: drupal8
+#  site: MYSITE
+#  id: PANTHEONID
+#  webroot: web
+#  via: nginx
+#  database: mariadb:10.1
