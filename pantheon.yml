@@ -1,0 +1,16 @@
+# @file
+# Pantheon's site configuration file.
+
+# @see https://pantheon.io/docs/pantheon-yml/
+api_version: 1
+
+# Indicate the use of a nested docroot ("web").
+# @see https://pantheon.io/docs/pantheon-yml/#nested-docroot
+web_docroot: true
+
+# Specify drush version; target the latest version of Drush 8.
+# @see https://pantheon.io/docs/pantheon-yml/#drush-version
+drush_version: 8
+
+# @see https://pantheon.io/docs/pantheon-yml/#php-version
+php_version: 7.2
