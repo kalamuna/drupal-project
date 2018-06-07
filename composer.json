@@ -16,7 +16,6 @@
         }
     ],
     "require": {
-<<<<<<< HEAD
         "php": ">=5.2.5",
         "ext-curl": "*",
         "ext-gd": "*",
