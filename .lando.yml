@@ -1,5 +1,5 @@
-# CHANGEME (replace "drupalproj" with project shortcode).
-name: drupalproj
+# CHANGEME (replace "drupal7proj" with project shortcode).
+name: drupal7proj
 recipe: drupal7
 
 services:
