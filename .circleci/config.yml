@@ -19,6 +19,10 @@ jobs:
           keys:
             - drupal-composer-{{ checksum "composer.lock" }}
             - drupal-composer-
+      # Install PHP Extensions
+      - run:
+          name: PHP Extensions
+          command: docker-php-ext-install gd
       # Install node modules and build
       - run: npm it
       # Install composer dependencies
