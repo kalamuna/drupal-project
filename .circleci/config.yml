@@ -22,7 +22,7 @@ jobs:
       # Install PHP Extensions
       - run:
           name: PHP Extensions
-          command: docker-php-ext-install gd
+          command: sudo docker-php-ext-install gd
       # Install node modules and build
       - run: npm it
       # Install composer dependencies
