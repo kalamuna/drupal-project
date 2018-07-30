@@ -84,3 +84,6 @@ npm-debug.log
 
 # Ignore private files (though the folder must pre-exist).
 /private
+
+# Ignore .env files as they are personal
+/.env

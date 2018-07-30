@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/drupal-composer/drupal-project.svg?branch=8.x)](https://travis-ci.org/drupal-composer/drupal-project)
 
-This project template should provide a kickstart for managing your site
+This project template provides a starter kit for managing your site
 dependencies with [Composer](https://getcomposer.org/).
 
 If you want to know how to use it as replacement for
@@ -49,6 +49,7 @@ When installing the given `composer.json` some tasks are taken care of:
 * Creates `web/sites/default/files`-directory.
 * Latest version of drush is installed locally for use at `vendor/bin/drush`.
 * Latest version of DrupalConsole is installed locally for use at `vendor/bin/drupal`.
+* Creates environment variables based on your .env file. See [.env.example](.env.example).
 
 ## Updating Drupal Core
 
@@ -94,17 +95,16 @@ The [drupal-scaffold](https://github.com/drupal-composer/drupal-scaffold) plugin
 index.php, update.php, …) to the web/ directory of your project. If you have not customized those files you could choose
 to not check them into your version control system (e.g. git). If that is the case for your project it might be
 convenient to automatically run the drupal-scaffold plugin after every install or update of your project. You can
-achieve that by registering `@drupal-scaffold` as post-install and post-update command in your composer.json:
+achieve that by registering `@composer drupal:scaffold` as post-install and post-update command in your composer.json:
 
 ```json
 "scripts": {
-    "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
     "post-install-cmd": [
-        "@drupal-scaffold",
+        "@composer drupal:scaffold",
         "..."
     ],
     "post-update-cmd": [
-        "@drupal-scaffold",
+        "@composer drupal:scaffold",
         "..."
     ]
 },
