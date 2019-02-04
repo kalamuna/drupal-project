@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/drupal-composer/drupal-project.svg?branch=8.x)](https://travis-ci.org/drupal-composer/drupal-project)
 
-This project template should provide a kickstart for managing your site
+This project template provides a starter kit for managing your site
 dependencies with [Composer](https://getcomposer.org/).
 
 If you want to know how to use it as replacement for
@@ -20,7 +20,7 @@ for your setup.
 After that you can create the project:
 
 ```
-composer create-project drupal-composer/drupal-project:8.x-dev some-dir --stability dev --no-interaction
+composer create-project drupal-composer/drupal-project:8.x-dev some-dir --no-interaction
 ```
 
 With `composer require ...` you can download new dependencies to your 
@@ -49,6 +49,7 @@ When installing the given `composer.json` some tasks are taken care of:
 * Creates `web/sites/default/files`-directory.
 * Latest version of drush is installed locally for use at `vendor/bin/drush`.
 * Latest version of DrupalConsole is installed locally for use at `vendor/bin/drupal`.
+* Creates environment variables based on your .env file. See [.env.example](.env.example).
 
 ## Updating Drupal Core
 
@@ -94,17 +95,16 @@ The [drupal-scaffold](https://github.com/drupal-composer/drupal-scaffold) plugin
 index.php, update.php, …) to the web/ directory of your project. If you have not customized those files you could choose
 to not check them into your version control system (e.g. git). If that is the case for your project it might be
 convenient to automatically run the drupal-scaffold plugin after every install or update of your project. You can
-achieve that by registering `@drupal-scaffold` as post-install and post-update command in your composer.json:
+achieve that by registering `@composer drupal:scaffold` as post-install and post-update command in your composer.json:
 
 ```json
 "scripts": {
-    "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
     "post-install-cmd": [
-        "@drupal-scaffold",
+        "@composer drupal:scaffold",
         "..."
     ],
     "post-update-cmd": [
-        "@drupal-scaffold",
+        "@composer drupal:scaffold",
         "..."
     ]
 },
@@ -132,12 +132,14 @@ Follow the instructions in the [documentation on drupal.org](https://www.drupal.
 
 ### How do I specify a PHP version ?
 
-Currently Drupal 8 supports PHP 5.5.9 as minimum version (see [Drupal 8 PHP requirements](https://www.drupal.org/docs/8/system-requirements/drupal-8-php-requirements)), however it's possible that a `composer update` will upgrade some package that will then require PHP 7+.
+This project supports PHP 5.6 as minimum version (see [Drupal 8 PHP requirements](https://www.drupal.org/docs/8/system-requirements/drupal-8-php-requirements)), however it's possible that a `composer update` will upgrade some package that will then require PHP 7+.
 
 To prevent this you can add this code to specify the PHP version you want to use in the `config` section of `composer.json`:
 ```json
 "config": {
     "sort-packages": true,
-    "platform": {"php": "5.5.9"}
+    "platform": {
+        "php": "5.6.40"
+    }
 },
 ```
