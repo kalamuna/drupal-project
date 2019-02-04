@@ -45,10 +45,8 @@
         "drupal/console": "^1.0.2",
         "drupal/core": "^8.6.0",
         "drush/drush": "^9.0.0",
-        "vlucas/phpdotenv": "^2.4",
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3",
-<<<<<<< HEAD
         "components/rubaxa-sortable": "^1.6",
         "drupal/admin_toolbar": "^1.18",
         "drupal/big_pipe_sessionless": "^1.2",
@@ -164,6 +162,10 @@
             "drush/Commands/{$name}": ["type:drupal-drush"]
         },
         "drupal-scaffold": {
+            "initial": {
+                ".editorconfig": "../.editorconfig",
+                ".gitattributes": "../.gitattributes"
+            },
             "excludes": {
                 "sites/development.services.yml": "sites/development.services.yml"
             }
