@@ -38,14 +38,17 @@
         }
     },
     "require": {
+        "php": ">=5.6",
         "composer/installers": "^1.2",
-        "cweagans/composer-patches": "^1.6",
-        "drupal-composer/drupal-scaffold": "^2.2",
+        "cweagans/composer-patches": "^1.6.5",
+        "drupal-composer/drupal-scaffold": "^2.5",
         "drupal/console": "^1.0.2",
-        "drupal/core": "~8.5",
+        "drupal/core": "^8.6.0",
         "drush/drush": "^9.0.0",
+        "vlucas/phpdotenv": "^2.4",
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3",
+<<<<<<< HEAD
         "components/rubaxa-sortable": "^1.6",
         "drupal/admin_toolbar": "^1.18",
         "drupal/big_pipe_sessionless": "^1.2",
@@ -93,7 +96,8 @@
         "drupal/twig_xdebug": "^1.0",
         "geerlingguy/drupal-vm": "^4.2",
         "kalamuna/kalaconfig": "1.x-dev",
-        "webflo/drupal-core-require-dev": "~8.5"
+        "webflo/drupal-core-require-dev": "^8.6.0",
+        "zaporylie/composer-drupal-optimizations": "^1.0"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -103,7 +107,8 @@
     "autoload": {
         "classmap": [
             "scripts/composer/ScriptHandler.php"
-        ]
+        ],
+        "files": ["load.environment.php"]
     },
     "scripts": {
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
@@ -141,6 +146,10 @@
             "bower-asset",
             "npm-asset"
         ],
+        "composer-exit-on-patch-failure": true,
+        "patchLevel": {
+            "drupal/core": "-p2"
+        },
         "installer-paths": {
             "web/core": ["type:drupal-core"],
             "web/libraries/{$name}": [
@@ -152,7 +161,7 @@
             "web/modules/contrib/{$name}": ["type:drupal-module"],
             "web/profiles/contrib/{$name}": ["type:drupal-profile"],
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
-            "drush/contrib/{$name}": ["type:drupal-drush"]
+            "drush/Commands/{$name}": ["type:drupal-drush"]
         },
         "drupal-scaffold": {
             "excludes": {
