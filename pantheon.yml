@@ -5,7 +5,7 @@ php_version: 7.2
 drush_version: 10
 web_docroot: true
 workflows:
-  deploy:
+  sync_code:
     after:
       - type: webphp
         description: Import configuration from .yml files
