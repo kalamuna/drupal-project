@@ -44,6 +44,31 @@ Press the `Use this template` button in Github to create a new repository for yo
 
 1. Create an `.env` file from `.env.example`, and set the appropriate database credentials and drush site url.
 
+## Detailed installation instructions for installation from config
+
+Install Drupal Console launcher if you don't have it installed already. On Mac or Linux run
+
+```sh
+curl https://drupalconsole.com/installer -L -o drupal.phar
+```
+Once downloaded run
+```sh
+mv drupal.phar /usr/local/bin/drupal
+chmod +x /usr/local/bin/drupal
+```
+in the root directory of your site run
+
+```sh
+drupal init --site --no-interaction
+```
+Move .build.yml into the console/chain folder. Alternatively you can put it in the _~/.console/chain_ folder for global console usage.
+
+Run this from the root of your site
+```sh
+drupal build
+```
+It will install the site from the configuration in your _config/sync_ directory.
+
 ## What does the original drupal-composer/drupal-project template do?
 
 When installing the given `composer.json` some tasks are taken care of:

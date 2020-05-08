@@ -1,0 +1,16 @@
+command:
+  name: build
+  description: 'Build site by installing and importing configuration'
+commands:
+  # Install site
+  - command: site:install
+    options:
+      force: true
+    arguments:
+      profile: standard
+  # Import configurations
+  - command: config:import
+  # Rebuild cache
+  - command: cache:rebuild
+    arguments:
+        cache: all
