@@ -74,6 +74,32 @@ jobs:
               echo -e "Host *drush.in\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
               git remote add pantheon ${PANTHEON_REPO}
               git push --force pantheon ${CIRCLE_BRANCH}
+
+  # Visual regression testing
+  backstop:
+    parameters:
+      path_to_backstop_config:
+        type: string
+        default: "backstop/backstop-config.js"
+    docker:
+      - image: backstopjs/backstopjs:3.9.5
+    steps:
+      - run: backstop reference --config=<<parameters.path_to_backstop_config>>
+      - run: backstop test --config=<<parameters.path_to_backstop_config>> || touch backstop_failed.txt
+      - store_artifacts:
+          path: backstop_data
+      - run:
+          name: Report
+          command: |
+                CIRCLE_ARTIFACTS_URL=${CIRCLE_BUILD_URL}/artifacts/${CIRCLE_NODE_INDEX}/root/project
+                IMAGE=$(find -- backstop_data/bitmaps_test -type f -name "*.png" | head -n 1) || echo "suppressing a 141 error from head. TODO, something better"
+                echo $IMAGE
+                REPORT_URL=${CIRCLE_ARTIFACTS_URL}/backstop_data/html_report/index.html
+                BODY="### Visual regression report:\\n\\n[![Visual report](${CIRCLE_ARTIFACTS_URL}/${IMAGE})]($REPORT_URL)"
+                {
+                  GITHUB_URL="https://api.github.com/repos/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}/commits/${CIRCLE_SHA1}/comments?access_token=${GITHUB_TOKEN}"
+                  curl -d '{ "body": "'"${BODY}"'" }' -X POST "${GITHUB_URL}"
+                } &> /dev/null
 workflows:
   version: 2
   # Build the drupal site and deploy it to Pantheon.
@@ -87,3 +113,11 @@ workflows:
               #   2. The branch name is less then or equal to 11 characters long.
               #   3. The branch name doesn't have any uppercase characters.
               only: /^[^./A-Z]{0,11}$/
+  # Test
+  test:
+    jobs:
+      - backstop:
+          filters:
+            branches:
+              # Test only on visual regression test
+              only: visual
