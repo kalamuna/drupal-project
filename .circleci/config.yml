@@ -75,7 +75,7 @@ jobs:
               git remote add pantheon ${PANTHEON_REPO}
               git push --force pantheon ${CIRCLE_BRANCH}
 
-    # Visual regression testing
+  # Visual regression testing
   backstop:
     docker:
       - image: backstopjs/backstopjs:5.0.1
