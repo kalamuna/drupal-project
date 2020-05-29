@@ -75,17 +75,16 @@ jobs:
               git remote add pantheon ${PANTHEON_REPO}
               git push --force pantheon ${CIRCLE_BRANCH}
 
-  # Visual regression testing
+    # Visual regression testing
   backstop:
-    parameters:
-      path_to_backstop_config:
-        type: string
-        default: "backstop/backstop-config.js"
     docker:
-      - image: backstopjs/backstopjs:3.9.5
+      - image: backstopjs/backstopjs:5.0.1
+    working_directory: ~/drupal
     steps:
-      - run: backstop reference --config=<<parameters.path_to_backstop_config>>
-      - run: backstop test --config=<<parameters.path_to_backstop_config>> || touch backstop_failed.txt
+      # Check out the codebase from github.
+      - checkout
+      - run: backstop reference --config=backstop.json
+      - run: backstop test --config=backstop.json || touch backstop_failed.txt
       - store_artifacts:
           path: backstop_data
       - run:
@@ -112,11 +111,21 @@ workflows:
               #   1. The branch isn't a feature branch (no /).
               #   2. The branch name is less then or equal to 11 characters long.
               #   3. The branch name doesn't have any uppercase characters.
-              only: /^[^./A-Z]{0,11}$/
+              only:
+                - /^[^./A-Z]{0,11}$/
+              ignore:
+                - visual
   # Test
   test:
     jobs:
+      - build:
+          filters:
+            branches:
+              # Test only on visual regression test
+              only: visual
       - backstop:
+          requires:
+            - build
           filters:
             branches:
               # Test only on visual regression test
