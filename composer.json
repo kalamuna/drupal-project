@@ -109,6 +109,8 @@
             },
             "gitignore": false
         },
+        "patches-file": "composer.patches.json",
+        "enable-patching": true,
         "installer-paths": {
             "web/core": ["type:drupal-core"],
             "web/libraries/{$name}": ["type:drupal-library"],
