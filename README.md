@@ -13,7 +13,7 @@ Press the `Use this template` button in Github to create a new repository for yo
 ### Create Pantheon environment
 
 1. Created a new pantheon site at [https://dashboard.pantheon.io/sites/create](https://dashboard.pantheon.io/sites/create), selecting the appropriate Organization. *Note: It may make more sense from a process perspective to have the client create the pantheon site and then add Kalamuna as a supporting organization.*
-1. When prompted to select an upstream, choose the regular Drupal 8 option, so the hidden framework variable on Pantheon is properly set to Drupal.
+1. When prompted to select an upstream, choose the regular **Pantheon Drupal 8 upstream** option (not an organization upstream), so the hidden framework variable on Pantheon is properly set to Drupal.
 1. Run `terminus site:upstream:set my-site-name empty` from your command line to remove the unneeded upstream after the site has been initialized.
 1. Add the Kalamuna Commit Bot `kalacommitbot@kalamuna.com` under the `Team` tab for the project (or an alternate account you'd like to use for pushing to Pantheon).
 1. Copy the location of the Pantheon git repo from the `Git SSH clone URL` field under the `Connection info` dropdown in the Pantheon site dashboard, which is the format `ssh://codeserver.dev.XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX@codeserver.dev.XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX.drush.in:2222/~/repository.git`. Discard the `git clone` and `site-name` parts from before and after the URL in the provided command.
