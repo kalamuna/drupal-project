@@ -7,8 +7,8 @@ jobs:
   # Called by the build-and-deploy workflow.
   build:
     docker:
-      # Specify the docker image to use for this project.
-      - image: circleci/php:7.2-node-browsers
+      # Specify the docker image to use for this project. (Currently pinned to latest circleci/php:7.3-node-browsers before Composer 2 update.)
+      - image: circleci/php@sha256:be32e00d0ff9515bd782a4246388786c49b4acd4441138e7ba49e190f0603c57
     working_directory: ~/drupal
     steps:
       # Check out the codebase from github.
