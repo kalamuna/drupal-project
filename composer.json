@@ -117,6 +117,8 @@
             "web/profiles/contrib/{$name}": ["type:drupal-profile"],
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
             "drush/Commands/contrib/{$name}": ["type:drupal-drush"]
-        }
+        },
+        "patches-file": "composer.patches.json",
+        "enable-patching": true
     }
 }
