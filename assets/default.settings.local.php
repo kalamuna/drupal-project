@@ -161,3 +161,17 @@ if (file_exists("$app_root/modules/contrib/devel/kint/kint/Kint.class.php")) {
   require_once "$app_root/modules/contrib/devel/kint/kint/Kint.class.php";
   Kint::$maxLevels = 4;
 }
+
+/**
+ * Add a dummy hash salt if one is not set yet, fixes a conflict with pantheon:
+ * https://github.com/pantheon-systems/drops-8/issues/103
+ */
+if (!isset($settings['hash_salt']) || empty($settings['hash_salt'])) {
+  $settings['hash_salt'] = 'LOCAL-DEV';
+}
+
+/**
+ * Allow any host pattern when developing locally.
+ */
+$settings['trusted_host_patterns'] = [];
+
