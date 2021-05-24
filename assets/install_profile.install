@@ -23,6 +23,12 @@ function drupal_project_install() {
   // Use the admin theme for editing content.
   $config_factory->getEditable('node.settings')->set('use_admin_theme', true)->save(TRUE);
 
+  // Create a basic page content type.
+  \Drupal\node\Entity\NodeType::create(array('type' => 'page', 'name' => 'Basic Page', 'description' => 'Used for about pages and other non-structured content.', 'display_submitted' => false ))->save();
+
+  // Create a default pathauto pattern for content (can't set for page since we don't know the uuid).
+  \Drupal\pathauto\Entity\PathautoPattern::create(array('id' => 'default_content', 'label' => 'Default Content', 'type' => 'canonical_entities:node', 'pattern' => '[node:menu-link:parent:url:path]/[node:title]'));
+
   // Create an administrator role that has all permissions.
   \Drupal\user\Entity\Role::create(array('id' => 'admin', 'label' => 'Administrator', 'is_admin' => true, 'weight' => 4))->save();
 
@@ -50,24 +56,39 @@ function drupal_project_install() {
   // Grant additional permissions to editors on top of whatever authenticated users can do.
   user_role_grant_permissions('editor', array_merge(\Drupal\user\Entity\Role::load('authenticated')->getPermissions(), [
     'access administration pages',
+    'access content',
     'access content overview',
     'access media overview',
     'access site in maintenance mode',
     'access taxonomy overview',
     'access toolbar',
+    'access user profiles',
     'administer menu',
     'administer nodes',
     'administer redirects',
     'administer taxonomy',
     'bypass node access',
+    'change own username',
     'create media',
+    'create page content',
     'create url aliases',
     'delete any media',
+    'delete any page content',
+    'delete own page content',
+    'delete page revisions',
+    'edit any page content',
+    'edit own page content',
     'link to any page',
     'notify of path changes',
+    'revert page revisions',
+    'search content',
     'update any media',
     'use admin toolbar search',
+    'use advanced search',
     'view all media revisions',
+    'view media',
+    'view page revisions',
+    'view the administration theme',
     'view unpublished paragraphs',
   ]));
 
