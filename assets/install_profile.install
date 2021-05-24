@@ -17,8 +17,8 @@ function drupal_project_install() {
   // Only allow admins to create accounts by default.
   $config_factory->getEditable('user.settings')->set('register', 'admin_only')->save(TRUE);
 
-  // Set the admin theme to Olivero.
-  $config_factory->getEditable('system.theme')->set('admin', 'olivero')->save(TRUE);
+  // Set the admin theme to Claro.
+  $config_factory->getEditable('system.theme')->set('admin', 'claro')->save(TRUE);
 
   // Use the admin theme for editing content.
   $config_factory->getEditable('node.settings')->set('use_admin_theme', true)->save(TRUE);
