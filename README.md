@@ -20,8 +20,6 @@ Press the `Use this template` button in Github to create a new repository for yo
 
 ### Initialize CircleCI integration
 
-> Note: The circleci/php:7.3-node-browsers image is currently incompatible with Drupal 8, due to the upgrade to Composer 2. For the time being, the docker image is set to a specific tag from before composer was upgraded.
-
 1. Log into CircleCI and add your github repo as an active project.
 1. Find the place to add ssh keys to the circle project, which is at `Project Settings` >  `SSH Keys` > `Additional SSH Keys` in the new circleci interface, and at `Project Settings` > `SSH Permissions` in the old interface.
 1. And add a new private key with `drush.in` as the hostname and the private key text for `kalacommitbot@kalamuna.com`, or whichever user you added to the pantheon project for pushing commits. The private key should start with `-----BEGIN RSA PRIVATE KEY-----` and end with `-----END RSA PRIVATE KEY-----`. (Kalamuna devs should look in 1password for this info.)
