@@ -2,7 +2,7 @@
 name: Drupal Project
 type: profile
 description: 'Install profile including common core modules and contrib from drupal-project.'
-core: 8.x
+core_version_requirement: ^8.8 || ^9
 
 # Modules to install to support the profile.
 install:
@@ -27,7 +27,6 @@ install:
   - google_tag
   - image
   - link
-  - linkit
   - media
   - media_library
   - menu_ui
