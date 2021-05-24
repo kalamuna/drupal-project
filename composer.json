@@ -18,11 +18,11 @@
     "require": {
         "php": "^7.3",
         "composer/installers": "^1.9",
-        "cweagans/composer-patches": "^1.6",
+        "cweagans/composer-patches": "^1.7",
         "drupal/admin_toolbar": "^2.2",
         "drupal/allowed_formats": "^1.2",
-        "drupal/core": "^8.8",
-        "drupal/core-composer-scaffold": "^8.8",
+        "drupal/core-composer-scaffold": "^9.1",
+        "drupal/core-recommended": "^9.1",
         "drupal/extlink": "^1.3",
         "drupal/field_group": "^3.0",
         "drupal/focal_point": "^1.4",
@@ -36,12 +36,12 @@
         "drupal/simple_sitemap": "^3.6",
         "drush/drush": "^10.3",
         "pantheon-systems/drupal-integrations": "^8.0",
-        "vlucas/phpdotenv": "^4.1",
+        "vlucas/phpdotenv": "^5.1",
         "webflo/drupal-finder": "^1.2",
-        "zaporylie/composer-drupal-optimizations": "^1.1"
+        "zaporylie/composer-drupal-optimizations": "^1.2"
     },
     "require-dev": {
-        "drupal/core-dev": "^8.8",
+        "drupal/core-dev": "^9.1",
         "drupal/devel": "^2.1",
         "drupal/stage_file_proxy": "^1.0"
     },
@@ -51,6 +51,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
+        "discard-changes": true,
         "sort-packages": true
     },
     "autoload": {
@@ -74,10 +75,6 @@
         ]
     },
     "extra": {
-        "composer-exit-on-patch-failure": true,
-        "patchLevel": {
-            "drupal/core": "-p2"
-        },
         "drupal-scaffold": {
             "allowed-packages": [
                 "pantheon-systems/drupal-integrations"
@@ -117,6 +114,12 @@
             "web/profiles/contrib/{$name}": ["type:drupal-profile"],
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
             "drush/Commands/contrib/{$name}": ["type:drupal-drush"]
+        },
+        "composer-exit-on-patch-failure": true,
+        "patchLevel": {
+            "drupal/core": "-p2"
+        },
+        "patches": {
         }
     }
 }
