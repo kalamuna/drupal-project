@@ -20,6 +20,7 @@
         "composer/installers": "^1.9",
         "cweagans/composer-patches": "^1.6",
         "drupal/admin_toolbar": "^2.2",
+        "drupal/environment_indicator": "^3.7",
         "drupal/allowed_formats": "^1.2",
         "drupal/core": "^8.8",
         "drupal/core-composer-scaffold": "^8.8",
